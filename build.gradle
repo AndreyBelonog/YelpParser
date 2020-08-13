@@ -1,0 +1,30 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '14'
+
+repositories {
+    mavenCentral()
+}
+
+def	lombokVersion = '1.18.8'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.3.2.RELEASE'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+    testCompile group: 'org.awaitility', name: 'awaitility', version: '4.0.3'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
