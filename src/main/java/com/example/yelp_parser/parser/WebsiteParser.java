@@ -4,6 +4,6 @@ import java.io.IOException;
 
 public interface WebsiteParser {
 
-    public String parseWebPage() throws IOException;
+    public String parseWebPage() throws IOException, InterruptedException;
 
 }
