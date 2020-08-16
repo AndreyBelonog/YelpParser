@@ -11,6 +11,5 @@ public class ContractorDto {
     private String contacts;
     private String rating;
     private String description;
-    private String zip;
-
+    private final Integer zip = 60605;
 }

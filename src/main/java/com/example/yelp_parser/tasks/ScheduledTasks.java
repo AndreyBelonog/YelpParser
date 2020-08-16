@@ -1,6 +1,5 @@
 package com.example.yelp_parser.tasks;
 
-import com.example.yelp_parser.parser.impl.YelpParser;
 import com.example.yelp_parser.worker.YelpWorker;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +11,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ScheduledTasks {
 
+    private static final long MILLIS_PER_DAY = 86400000;
+
+
     @Autowired
-    YelpWorker yelpWorker;
-
-    @Autowired
-    YelpParser yelpParser;
+    private YelpWorker yelpWorker;
 
 
-
-
-    @Scheduled(fixedRate = 1000000000)
-    public void test() throws IOException, InterruptedException {
-        yelpParser.parseWebPage();
+    @Scheduled(fixedRate = MILLIS_PER_DAY)
+    public void retrieveNewContractorsAndWriteThemToDb() throws IOException, InterruptedException {
+        yelpWorker.initializeYelpContractorsNamesAndLinks();
+        yelpWorker.writeNewContractorsToDb();
     }
 }

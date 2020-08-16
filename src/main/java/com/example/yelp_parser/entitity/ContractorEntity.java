@@ -7,15 +7,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "CONTRACTORS")
 @Getter
 @Setter
-@Table(name = "CONTRACTORS")
 public class ContractorEntity {
 
     @Id
     private String name;
-    private Integer zip = 60605;
     private String contacts;
-    private Short rating;
+    private String rating;
     private String description;
+    private Integer zip = 60605;
 }
